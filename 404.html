@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IFVeT — Área do Cliente</title>
+<meta name="description" content="Consulte o laudo do seu animal com o protocolo e o código de acesso.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="IFVeT — Área do Cliente">
+<meta property="og:description" content="Consulte o laudo com o protocolo e o código de acesso.">
+<meta property="og:image" content="https://laudos.ifvet.com.br/previa.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="IFVeT Patologia Diagnóstica">
+<style>
+  html,body{margin:0;height:100%;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:#fff;color:#171331}
+  main{min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;text-align:center}
+  .roda{width:28px;height:28px;border:3px solid #ECECF5;border-top-color:#4318E8;border-radius:50%;animation:g 0.8s linear infinite}
+  @keyframes g{to{transform:rotate(360deg)}}
+  a{color:#4318E8;font-weight:700}
+  p{margin:0;color:#696581;font-size:15px}
+</style>
+</head>
+<body>
+<main>
+  <div class="roda" aria-hidden="true"></div>
+  <p>Abrindo a Área do Cliente do IFVeT…</p>
+  <p><a id="ir" href="https://script.google.com/macros/s/AKfycbwCLe6E83fomH92sGQQ7DHFq5H03W4XMOqF5T8eUY30ODW3vuZ3wbP_bzHtdpmLnvjLbQ/exec">Toque aqui se não abrir sozinho</a></p>
+</main>
+<script>
+/*
+  IFVeT — ponte do endereço curto
+  ------------------------------------------------------------
+  Esta página mora em laudos.ifvet.com.br e só faz uma coisa:
+  manda o visitante para o portal no Apps Script, repassando o
+  protocolo. Nenhum laudo, código ou dado passa por aqui.
+
+    laudos.ifvet.com.br/P3622-26        -> portal?p=P3622-26
+    laudos.ifvet.com.br/?l=P1-26,P2-26  -> portal?l=P1-26,P2-26
+    laudos.ifvet.com.br/?f=painel       -> portal?f=painel
+
+  O destino é FIXO. Qualquer outra coisa no endereço é descartada,
+  para que ninguém use o domínio do laboratório como trampolim.
+
+  Se um dia o endereço do Apps Script mudar, troque DESTINO aqui e
+  no URL_PORTAL do Notificar.gs, e suba de novo index.html e 404.html
+  (os dois são idênticos).
+*/
+(function(){
+  var DESTINO = 'https://script.google.com/macros/s/AKfycbwCLe6E83fomH92sGQQ7DHFq5H03W4XMOqF5T8eUY30ODW3vuZ3wbP_bzHtdpmLnvjLbQ/exec';
+  var PROTOCOLO = /^[A-Z]{1,4}\d{1,6}[A-Z]?-\d{2}$/;
+  var saida = [];
+
+  var caminho = decodeURIComponent(location.pathname || '').replace(/^\/+|\/+$/g, '').toUpperCase();
+  if (PROTOCOLO.test(caminho)) saida.push('p=' + encodeURIComponent(caminho));
+
+  var q = {};
+  (location.search || '').replace(/^\?/, '').split('&').forEach(function(par){
+    if (!par) return;
+    var i = par.indexOf('=');
+    var k = decodeURIComponent(i < 0 ? par : par.slice(0, i));
+    var v = i < 0 ? '' : decodeURIComponent(par.slice(i + 1).replace(/\+/g, ' '));
+    q[k] = v;
+  });
+
+  if (!saida.length && q.p && PROTOCOLO.test(q.p.trim().toUpperCase())) {
+    saida.push('p=' + encodeURIComponent(q.p.trim().toUpperCase()));
+  }
+  if (q.l) {
+    var lista = q.l.toUpperCase().split(',').map(function(x){ return x.trim(); })
+      .filter(function(x){ return PROTOCOLO.test(x); }).slice(0, 20);
+    if (lista.length) saida.push('l=' + encodeURIComponent(lista.join(',')));
+  }
+  if (q.f && /^[a-z]{1,20}$/.test(q.f)) saida.push('f=' + q.f);
+
+  var alvo = DESTINO + (saida.length ? '?' + saida.join('&') : '');
+  document.getElementById('ir').href = alvo;
+  location.replace(alvo);
+})();
+</script>
+</body>
+</html>
