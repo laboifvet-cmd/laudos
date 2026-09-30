@@ -39,6 +39,7 @@
     laudos.ifvet.com.br/P3622-26        -> portal?p=P3622-26
     laudos.ifvet.com.br/?l=P1-26,P2-26  -> portal?l=P1-26,P2-26
     laudos.ifvet.com.br/?f=painel       -> portal?f=painel
+    laudos.ifvet.com.br/?cadastro=1     -> portal?cadastro=1 (cadastro da clínica)
 
   O destino é FIXO. Qualquer outra coisa no endereço é descartada,
   para que ninguém use o domínio do laboratório como trampolim.
@@ -73,6 +74,8 @@
     if (lista.length) saida.push('l=' + encodeURIComponent(lista.join(',')));
   }
   if (q.f && /^[a-z]{1,20}$/.test(q.f)) saida.push('f=' + q.f);
+  // O botão "Cadastre sua clínica" do site abre a Área do Cliente já no cadastro.
+  if (q.cadastro === '1') saida.push('cadastro=1');
 
   var alvo = DESTINO + (saida.length ? '?' + saida.join('&') : '');
   document.getElementById('ir').href = alvo;
