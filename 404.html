@@ -3,66 +3,72 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>IFVeT — Área do Cliente</title>
-<meta name="description" content="Consulte o laudo do seu animal com o protocolo e o código de acesso.">
-<meta name="robots" content="noindex">
-<meta property="og:title" content="IFVeT — Área do Cliente">
+<title>IFVET Patologia Diagnóstica — Área do Cliente</title>
+<meta name="description" content="Área do Cliente do IFVET Patologia Diagnóstica, laboratório de patologia veterinária em Fortaleza-CE: laudos de citologia, histopatologia e necropsia para clínicas e tutores.">
+<link rel="canonical" href="https://laudos.ifvet.com.br/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:title" content="IFVET — Área do Cliente">
 <meta property="og:description" content="Consulte o laudo com o protocolo e o código de acesso.">
 <meta property="og:image" content="https://laudos.ifvet.com.br/previa.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="IFVeT Patologia Diagnóstica">
-<style>
-  html,body{margin:0;height:100%;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:#fff;color:#171331}
-  main{min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;text-align:center}
-  .roda{width:28px;height:28px;border:3px solid #ECECF5;border-top-color:#4318E8;border-radius:50%;animation:g 0.8s linear infinite}
-  @keyframes g{to{transform:rotate(360deg)}}
-  a{color:#4318E8;font-weight:700}
-  p{margin:0;color:#696581;font-size:15px}
-</style>
-</head>
-<body>
-<main>
-  <div class="roda" aria-hidden="true"></div>
-  <p>Abrindo a Área do Cliente do IFVeT…</p>
-  <p><a id="ir" href="https://script.google.com/macros/s/AKfycbwCLe6E83fomH92sGQQ7DHFq5H03W4XMOqF5T8eUY30ODW3vuZ3wbP_bzHtdpmLnvjLbQ/exec">Toque aqui se não abrir sozinho</a></p>
-</main>
+<meta property="og:site_name" content="IFVET Patologia Diagnóstica">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Área do Cliente — IFVET Patologia Diagnóstica","url":"https://laudos.ifvet.com.br/","inLanguage":"pt-BR","isPartOf":{"@type":"WebSite","name":"IFVET Patologia Diagnóstica","url":"https://www.ifvet.com.br/"},"publisher":{"@type":"VeterinaryCare","@id":"https://www.ifvet.com.br/#laboratorio","name":"IFVET Patologia Diagnóstica","url":"https://www.ifvet.com.br/","telephone":"+55 85 99183-2120","email":"labo.ifvet@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Rua Professor Raimundo Vítor, 80 – Parquelândia","addressLocality":"Fortaleza","addressRegion":"CE","postalCode":"60450-115","addressCountry":"BR"}}}</script>
 <script>
 /*
-  IFVeT — ponte do endereço curto
+  IFVET — laudos.ifvet.com.br
   ------------------------------------------------------------
-  Esta página mora em laudos.ifvet.com.br e só faz uma coisa:
-  manda o visitante para o portal no Apps Script, repassando o
-  protocolo. Nenhum laudo, código ou dado passa por aqui.
+  Duas funções no mesmo arquivo (index.html e 404.html são idênticos):
 
-    laudos.ifvet.com.br/P3622-26        -> portal?p=P3622-26
-    laudos.ifvet.com.br/?l=P1-26,P2-26  -> portal?l=P1-26,P2-26
-    laudos.ifvet.com.br/?f=painel       -> portal?f=painel
-    laudos.ifvet.com.br/?cadastro=1     -> portal?cadastro=1 (cadastro da clínica)
+  1. PONTE do endereço curto. Com protocolo ou parâmetro no endereço,
+     manda o visitante na hora para o portal no Apps Script:
+
+       laudos.ifvet.com.br/P3622-26        -> portal?p=P3622-26
+       laudos.ifvet.com.br/?l=P1-26,P2-26  -> portal?l=P1-26,P2-26
+       laudos.ifvet.com.br/?f=painel       -> portal?f=painel
+       laudos.ifvet.com.br/?cadastro=1     -> portal?cadastro=1
+       laudos.ifvet.com.br/?entrar=1       -> portal (tela de entrada)
+
+     O ?entrar=1 é o link dos botões "Área do Cliente" do site oficial
+     (www.ifvet.com.br): quem clica lá segue direto para o portal.
+
+  2. PÁGINA DO LABORATÓRIO. O endereço puro mostra quem somos, como
+     falar com a gente e o botão para entrar. Antes ele só dizia
+     "Abrindo…" e redirecionava. Filtros de segurança de empresas
+     (Sophos e afins) classificam os sites lendo o conteúdo; uma página
+     vazia que leva a uma tela de login hospedada no Google se parece
+     com golpe e fica "não verificada".
 
   O destino é FIXO. Qualquer outra coisa no endereço é descartada,
   para que ninguém use o domínio do laboratório como trampolim.
+  Nenhum laudo, código ou dado passa por aqui.
 
-  Se um dia o endereço do Apps Script mudar, troque DESTINO aqui e
-  no URL_PORTAL do Notificar.gs, e suba de novo index.html e 404.html
-  (os dois são idênticos).
+  Se um dia o endereço do Apps Script mudar, troque DESTINO aqui, os
+  dois botões e o link "Toque aqui" abaixo, e o URL_PORTAL do
+  Notificar.gs. Depois suba de novo index.html e 404.html.
 */
-(function(){
-  var DESTINO = 'https://script.google.com/macros/s/AKfycbwCLe6E83fomH92sGQQ7DHFq5H03W4XMOqF5T8eUY30ODW3vuZ3wbP_bzHtdpmLnvjLbQ/exec';
+var DESTINO = 'https://script.google.com/macros/s/AKfycbwCLe6E83fomH92sGQQ7DHFq5H03W4XMOqF5T8eUY30ODW3vuZ3wbP_bzHtdpmLnvjLbQ/exec';
+var IFVET_ALVO = (function(){
   var PROTOCOLO = /^[A-Z]{1,4}\d{1,6}[A-Z]?-\d{2}$/;
   var saida = [];
 
-  var caminho = decodeURIComponent(location.pathname || '').replace(/^\/+|\/+$/g, '').toUpperCase();
+  var caminho = '';
+  try { caminho = decodeURIComponent(location.pathname || ''); } catch (e) {}
+  caminho = caminho.replace(/^\/+|\/+$/g, '').toUpperCase();
   if (PROTOCOLO.test(caminho)) saida.push('p=' + encodeURIComponent(caminho));
 
   var q = {};
   (location.search || '').replace(/^\?/, '').split('&').forEach(function(par){
     if (!par) return;
     var i = par.indexOf('=');
-    var k = decodeURIComponent(i < 0 ? par : par.slice(0, i));
-    var v = i < 0 ? '' : decodeURIComponent(par.slice(i + 1).replace(/\+/g, ' '));
-    q[k] = v;
+    try {
+      var k = decodeURIComponent(i < 0 ? par : par.slice(0, i));
+      var v = i < 0 ? '' : decodeURIComponent(par.slice(i + 1).replace(/\+/g, ' '));
+      q[k] = v;
+    } catch (e) {}
   });
 
   if (!saida.length && q.p && PROTOCOLO.test(q.p.trim().toUpperCase())) {
@@ -78,9 +84,129 @@
   if (q.cadastro === '1') saida.push('cadastro=1');
 
   var alvo = DESTINO + (saida.length ? '?' + saida.join('&') : '');
-  document.getElementById('ir').href = alvo;
-  location.replace(alvo);
+  if (saida.length || q.entrar === '1') {
+    document.documentElement.className = 'indo';
+    location.replace(alvo);
+  }
+  return alvo;
 })();
+document.addEventListener('DOMContentLoaded', function(){
+  var ir = document.getElementById('ir');
+  if (ir) ir.href = IFVET_ALVO;
+});
 </script>
+<style>
+  :root{--roxo:#4318E8;--roxo-escuro:#2E0FB0;--tinta:#171331;--cinza:#5E5A78;--borda:#E6E3F3;--lavanda:#F4F1FF;--fundo:#FAFAFE}
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:var(--fundo);color:var(--tinta);
+    line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--roxo)}
+  .pagina{max-width:980px;margin:0 auto;padding:28px 20px 40px}
+  header.topo{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-bottom:22px;border-bottom:1px solid var(--borda)}
+  header.topo img{height:46px;width:auto;display:block}
+  header.topo a.site{font-size:14px;font-weight:600;text-decoration:none}
+  header.topo a.site:hover{text-decoration:underline}
+  .principal{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:28px;margin-top:34px;align-items:start}
+  .rotulo{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--roxo)}
+  h1{font-size:clamp(28px,4.4vw,40px);line-height:1.15;margin:8px 0 14px;text-wrap:balance}
+  .intro{font-size:17px;color:var(--cinza);margin:0 0 22px;max-width:52ch}
+  .acoes{display:flex;gap:12px;flex-wrap:wrap}
+  .botao{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;border-radius:12px;
+    font-weight:700;font-size:16px;text-decoration:none;border:1px solid transparent}
+  .botao.primario{background:var(--roxo);color:#fff;box-shadow:0 8px 22px rgba(67,24,232,.22)}
+  .botao.primario:hover{background:var(--roxo-escuro)}
+  .botao.secundario{background:#fff;color:var(--roxo);border-color:var(--borda)}
+  .botao.secundario:hover{border-color:var(--roxo)}
+  .como{margin:26px 0 0;padding:0;list-style:none;display:grid;gap:12px}
+  .como li{background:#fff;border:1px solid var(--borda);border-radius:12px;padding:14px 16px;font-size:15px}
+  .como b{display:block;margin-bottom:2px}
+  .como span{color:var(--cinza)}
+  aside.lab{background:#fff;border:1px solid var(--borda);border-radius:16px;padding:22px}
+  aside.lab h2{font-size:18px;margin:0 0 4px}
+  aside.lab .sub{color:var(--cinza);font-size:14px;margin:0 0 16px}
+  dl{margin:0;display:grid;gap:14px}
+  dt{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--cinza)}
+  dd{margin:2px 0 0;font-size:15px}
+  dd a{font-weight:600;text-decoration:none}
+  dd a:hover{text-decoration:underline}
+  .seguranca{margin-top:28px;background:var(--lavanda);border-radius:12px;padding:14px 16px;font-size:14px;color:var(--tinta)}
+  footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--borda);font-size:13px;color:var(--cinza);display:flex;gap:6px 18px;flex-wrap:wrap}
+  .abrindo{display:none;min-height:100vh;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;text-align:center}
+  .abrindo p{margin:0;color:var(--cinza);font-size:15px}
+  .abrindo a{font-weight:700}
+  .roda{width:28px;height:28px;border:3px solid var(--borda);border-top-color:var(--roxo);border-radius:50%;animation:g .8s linear infinite}
+  @keyframes g{to{transform:rotate(360deg)}}
+  html.indo .pagina{display:none}
+  html.indo .abrindo{display:flex}
+  @media (max-width:760px){
+    .principal{grid-template-columns:1fr;margin-top:26px}
+    header.topo img{height:38px}
+    .acoes .botao{flex:1 1 220px}
+  }
+</style>
+</head>
+<body>
+<div class="abrindo" role="status">
+  <div class="roda" aria-hidden="true"></div>
+  <p>Abrindo a Área do Cliente do IFVET…</p>
+  <p><a id="ir" href="https://script.google.com/macros/s/AKfycbwCLe6E83fomH92sGQQ7DHFq5H03W4XMOqF5T8eUY30ODW3vuZ3wbP_bzHtdpmLnvjLbQ/exec">Toque aqui se não abrir sozinho</a></p>
+</div>
+
+<div class="pagina">
+  <header class="topo">
+    <a href="https://www.ifvet.com.br/" aria-label="IFVET Patologia Diagnóstica — site oficial">
+      <img src="/logo-ifvet.webp" alt="IFVET Patologia Diagnóstica" width="520" height="183">
+    </a>
+    <a class="site" href="https://www.ifvet.com.br/">www.ifvet.com.br →</a>
+  </header>
+
+  <main class="principal">
+    <section>
+      <div class="rotulo">Área do Cliente</div>
+      <h1>Laudos do IFVET Patologia Diagnóstica</h1>
+      <p class="intro">Laboratório de patologia veterinária em Fortaleza-CE. Aqui clínicas, hospitais e tutores
+        consultam os laudos de citologia, histopatologia, biópsia transcirúrgica e necropsia.</p>
+      <div class="acoes">
+        <a class="botao primario" href="https://script.google.com/macros/s/AKfycbwCLe6E83fomH92sGQQ7DHFq5H03W4XMOqF5T8eUY30ODW3vuZ3wbP_bzHtdpmLnvjLbQ/exec">Entrar na Área do Cliente</a>
+        <a class="botao secundario" href="https://script.google.com/macros/s/AKfycbwCLe6E83fomH92sGQQ7DHFq5H03W4XMOqF5T8eUY30ODW3vuZ3wbP_bzHtdpmLnvjLbQ/exec?cadastro=1">Cadastrar minha clínica</a>
+      </div>
+      <ul class="como">
+        <li><b>Clínicas e hospitais</b><span>Entram com o e-mail e a senha da clínica e veem todos os casos enviados,
+          com o andamento, a previsão de liberação e o PDF do laudo.</span></li>
+        <li><b>Tutores (atendimento particular)</b><span>Entram com o número do protocolo e o código de acesso
+          que receberam do laboratório.</span></li>
+      </ul>
+      <p class="seguranca"><b>Endereço oficial.</b> laudos.ifvet.com.br é o endereço dos laudos do IFVET, e o
+        login abre numa página do Google (script.google.com), onde o sistema do laboratório funciona.
+        O IFVET nunca pede sua senha por WhatsApp, telefone ou e-mail.</p>
+    </section>
+
+    <aside class="lab" aria-labelledby="lab-titulo">
+      <h2 id="lab-titulo">IFVET Patologia Diagnóstica</h2>
+      <p class="sub">Laboratório de patologia veterinária</p>
+      <dl>
+        <div><dt>Endereço</dt>
+          <dd>Rua Professor Raimundo Vítor, 80 – Parquelândia<br>Fortaleza-CE, CEP 60450-115</dd></div>
+        <div><dt>Horário de atendimento</dt>
+          <dd>Segunda a sexta, 8h30 às 17h30<br>Sábado, 9h às 13h</dd></div>
+        <div><dt>WhatsApp e telefone</dt>
+          <dd><a href="https://wa.me/5585991832120">(85) 99183-2120</a></dd></div>
+        <div><dt>E-mail</dt>
+          <dd><a href="mailto:labo.ifvet@gmail.com">labo.ifvet@gmail.com</a></dd></div>
+        <div><dt>Instagram</dt>
+          <dd><a href="https://www.instagram.com/ifvetlab/">@ifvetlab</a></dd></div>
+        <div><dt>Responsável técnico</dt>
+          <dd>Dr. Ismael Lira Borges – CRMV-CE 2596</dd></div>
+      </dl>
+    </aside>
+  </main>
+
+  <footer>
+    <span>© IFVET Patologia Diagnóstica · Fortaleza, Ceará</span>
+    <a href="https://www.ifvet.com.br/">Site oficial</a>
+    <a href="https://www.ifvet.com.br/privacidade/">Política de privacidade</a>
+  </footer>
+</div>
 </body>
 </html>
